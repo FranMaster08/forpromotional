@@ -17,7 +17,7 @@ export class UserService {
       createUserDto.name = createUserDto.name.toLocaleLowerCase();
       createUserDto.name = createUserDto.last_name.toLocaleLowerCase();
 
-      const user = await this.userRepository.create(createUserDto);
+      const user = await this.userRepository.create({});
       return user;
     } catch (error) {
       throw new Error(`No se creo el usuario` + error);
@@ -28,8 +28,8 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async findOne(id: string) {
-    return this.userRepository.findOneBy({ id });
+  async findOne(idCliente: string) {
+    return this.userRepository.findOneBy({ idCliente });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
